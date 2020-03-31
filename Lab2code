@@ -1,0 +1,88 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <iostream>
+#include <iomanip>
+#include <conio.h>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	while(true)
+	{
+		int var = 0;
+		cout << "Enter numbers - 1" << endl << "Open old file - 2" << endl << "Exit - 3" << endl;
+		cin >> var;
+		cout << endl;
+		if (var == 1)
+		{
+			var = 0;
+			int t;
+			cout << "Enter number: ";
+			cin >> t;
+			cout << endl;
+			char pathend[64] = " ";
+			cout << "Enter file name" << endl << "Example: data.txt" << endl;
+			cin >> pathend;
+			cout << endl;
+			ofstream output;
+			output.open(pathend, ios::app);
+			if (!output.is_open())
+			{
+				cout << "Eror";
+			}
+			else
+			{
+				cout << "Open" << endl;
+				t = t / 10;
+
+
+				output << "Dec: " << t << endl;
+
+				output << "Hex: " << hex << t << endl;
+
+				output << "Oct: " << oct << t << endl;
+
+				cout << "Saving success" << endl;
+				cout << endl;
+			}
+
+			output.close();
+
+		}
+		if (var == 2)
+		{
+			var = 0;
+			string first, second, third;
+			ifstream input;
+			char pathend[64] = " ";
+			cout << "Enter file name" << endl << "Example: data.txt" << endl;
+			cin >> pathend;
+			cout << endl;
+
+			input.open(pathend, ios::in);
+			if (!input.is_open())
+			{
+				cout << "Eror";
+			}
+			else
+			{
+				cout << "Open" << endl;
+				cout << endl;
+				getline(input, first);
+				cout << first << endl;
+				getline(input, second);
+				cout << second << endl;
+				getline(input, third);
+				cout << third << endl;
+				cout << endl;
+			}
+
+			input.close();
+		}
+		if (var == 3) { break; }
+	}
+	
+}
